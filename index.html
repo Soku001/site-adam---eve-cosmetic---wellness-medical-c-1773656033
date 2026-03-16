@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam & Eve Cosmetic & Wellness Medical Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Global Styles */
+        :root {
+            --primary-color: #0D1B2A; /* Deep Navy */
+            --accent-color: #C9A84C; /* Gold */
+            --background-color: #FFFFFF; /* Crisp White */
+            --whatsapp-green: #25D366;
+            --text-dark: #333;
+            --text-light: #f8f9fa; /* for contrast on dark backgrounds */
+            --shadow: rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --spacing-md: 20px;
+            --spacing-lg: 40px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+        h4 { font-size: 1.4em; }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 12px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            color: var(--background-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: var(--background-color);
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-header h2 {
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 1.05em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(13, 27, 42, 0.7)), url('https://source.unsplash.com/featured/1600x900/?Medical,Center,professional') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px; /* Offset for sticky nav */
+        }
+
+        .hero h1 {
+            color: var(--accent-color);
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            color: var(--text-light);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background-color: var(--background-color);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card i {
+            font-size: 3.5em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-card {
+            background-color: var(--background-color);
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 15px var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .testimonial-card .author {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+
+        .testimonial-card .stars {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* New Features Section */
+        .features {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .features .section-header h2 {
+            color: var(--accent-color);
+        }
+        .features .section-header p {
+            color: var(--text-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-item {
+            background-color: rgba(255, 255, 255, 0.08); /* Slightly transparent white on dark background */
+            border-radius: var(--border-radius);
+            padding: var(--spacing-md);
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-item i {
+            font-size: 3.5em;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .feature-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-lg);
+            justify-content: center;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px var(--shadow);
+            padding: var(--spacing-md);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .contact-info p i {
+            color: var(--accent-color);
+            margin-right: 15px;
+            font-size: 1.3em;
+            line-height: 1.6; /* Align icon with text */
+        }
+
+        .contact-form-wrapper h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: var(--spacing-lg) 0 20px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: left;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: var(--spacing-md);
+            padding: 0 15px;
+        }
+
+        .footer-col:first-child {
+            flex: 1.5; /* Give more space to the main info */
+        }
+
+        .footer-col h4 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-col p, .footer-col ul {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-col .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .footer-col .contact-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .footer-col .contact-item span {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85em;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar .container {
+                flex-wrap: wrap;
+            }
+            .navbar-brand {
+                flex-grow: 1;
+                text-align: left;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 15px 0;
+                text-align: center;
+                gap: 10px;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                width: 100%;
+            }
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-col {
+                text-align: center;
+                padding: 0;
+            }
+            .footer-col h4 {
+                margin-top: var(--spacing-md);
+            }
+            .footer-col .contact-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+
+            .hero {
+                height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+
+            .services-grid, .testimonials-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand {
+                font-size: 1.5em;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.6em; }
+            h3 { font-size: 1.3em; }
+
+            .hero {
+                height: 60vh;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <a href="#hero" class="navbar-brand"><i class="fas fa-medkit"></i> Adam & Eve</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-links" id="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About Us</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#features">Features</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1>Excellence in Cosmetic & Wellness Care</h1>
+                <p>Adam & Eve Medical Center: Your trusted partner for premium health, beauty, and well-being in Abu Dhabi. Experience unparalleled care tailored to your unique needs.</p>
+                <a href="#contact" class="btn">Book Your Consultation</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Specialised Services</h2>
+                    <p>At Adam & Eve, we offer a comprehensive range of medical and wellness services designed to elevate your health and aesthetics.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <h3>Advanced Dermatology</h3>
+                        <p>Specialized treatments for skin health, anti-aging, and aesthetic enhancement tailored by expert dermatologists.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-tooth"></i>
+                        <h3>Cosmetic Dentistry</h3>
+                        <p>Achieve your perfect smile with our state-of-the-art dental solutions, from routine care to advanced cosmetic procedures.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-syringe"></i>
+                        <h3>Aesthetic Medicine</h3>
+                        <p>Non-surgical and minimally invasive aesthetic treatments performed with precision and artistic vision for natural results.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>Wellness Programs</h3>
+                        <p>Holistic approaches to your well-being, including nutrition, detox, and preventive health strategies.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>General Medicine</h3>
+                        <p>Comprehensive primary care services for you and your family, ensuring your foundational health is always managed.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-head-side-mask"></i>
+                        <h3>Plastic Surgery Consults</h3>
+                        <p>Expert guidance and discreet consultations for those considering surgical aesthetic enhancements with leading specialists.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Adam & Eve Cosmetic & Wellness Medical Center</h2>
+                    <p>Where advanced medical expertise meets compassionate, personalized care.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Commitment to Your Well-being</h3>
+                        <p>Located in the heart of Abu Dhabi, Adam & Eve Cosmetic & Wellness Medical Center is a beacon of excellence in health and aesthetics. We are dedicated to providing a premium medical experience, focusing on personalized care, cutting-edge technology, and a serene, luxurious environment.</p>
+                        <p>Our team of highly qualified and internationally experienced medical professionals utilizes the latest advancements to ensure optimal outcomes and patient satisfaction. We believe in a holistic approach, addressing not just your immediate concerns but also your overall wellness journey.</p>
+                        <p>Your trust is our utmost priority. We strive to create an atmosphere where you feel heard, understood, and confident in the care you receive. Discover the difference of truly dedicated medical and aesthetic services at Adam & Eve.</p>
+                        <a href="#contact" class="btn btn-outline">Learn More & Connect</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://source.unsplash.com/featured/900x600/?Medical,Center,team" alt="Adam & Eve Medical Center Team">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Patients Say</h2>
+                    <p>Real stories from individuals who have experienced the Adam & Eve difference.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"Exceptional care from the moment I walked in. The staff are incredibly professional and made me feel completely at ease. My dermatology treatment yielded fantastic results, and I couldn't be happier with the experience at Adam & Eve."</p>
+                        <p class="author">- Fatima Al Mansouri, Abu Dhabi</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="quote">"The team at Adam & Eve exceeded my expectations for my dental aesthetic procedure. Their attention to detail and patient comfort is truly world-class. I highly recommend them for anyone seeking premium medical services."</p>
+                        <p class="author">- Ahmed Al Kuwaiti, Dubai</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="quote">"From the friendly reception to the knowledgeable doctors, every aspect of my wellness consultation was outstanding. I felt listened to and received a comprehensive plan that truly addresses my health goals. A truly professional medical center."</p>
+                        <p class="author">- Sara Ibrahim, Al Ain</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: var(--accent-color);">Now Available: Enhanced Patient Experience</h2>
+                    <p>We are constantly innovating to provide you with the most convenient and connected healthcare journey.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-comments"></i>
+                        <h3>Live Chat Support</h3>
+                        <p>Get instant assistance and answers to your queries with our 24/7 live chat feature, directly on our website.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Assistant</h3>
+                        <p>Our intelligent AI assistant is ready to provide immediate, accurate answers to your common questions anytime.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-headset"></i>
+                        <h3>AI Voice Agent</h3>
+                        <p>Never miss a call or an important detail. Our AI voice agent ensures every inquiry is handled efficiently and professionally.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fab fa-google"></i>
+                        <h3>Live Google Reviews</h3>
+                        <p>See what our patients truly think, in real-time. Our site automatically updates with the latest Google reviews for transparency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Connect With Adam & Eve</h2>
+                    <p>We are here to assist you. Reach out to us for appointments, inquiries, or any information you may need.</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Our Location & Details</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> <span>Villa NO: 209 Al Karamah St - near SKMC - Al Manhal - W14 02 - Abu Dhabi - United Arab Emirates</span></p>
+                        <p><i class="fas fa-phone-alt"></i> <span>+971 2 621 9996</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>info@aecmc.com</span></p>
+                        <!-- Gallery Images -->
+                        <div style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap; justify-content: center;">
+                            <img src="https://source.unsplash.com/featured/600x400/?modern,office" alt="Adam & Eve Modern Office" style="max-width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 10px var(--shadow); width: 250px;">
+                            <img src="https://source.unsplash.com/featured/600x400/?business,meeting" alt="Adam & Eve Business Meeting" style="max-width: 100%; height: auto; border-radius: var(--border-radius); box-shadow: 0 4px 10px var(--shadow); width: 250px;">
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <h3>Send Us Your Enquiry</h3>
+                        <form class="contact-form" action="#" method="POST"> <!-- In a real scenario, this would post to a server-side script -->
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="phone">Your Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+
+                            <button type="submit" class="btn">Submit Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Adam & Eve Medical Center</h4>
+                <p>A premium Medical Center serving Villa NO: 209 Al Karamah St - near SKMC - Al Manhal - W14 02 - Abu Dhabi - United Arab Emirates. Dedicated to delivering exceptional cosmetic and wellness solutions with integrity and care.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#features">New Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Villa NO: 209 Al Karamah St - near SKMC - Al Manhal - W14 02 - Abu Dhabi - UAE</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+971 2 621 9996</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@aecmc.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 Adam & Eve Cosmetic & Wellness Medical Center. All Rights Reserved.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/97126219996" class="whatsapp-float" target="_blank" aria-label="WhatsApp Us">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            const navItems = navLinks.querySelectorAll('a');
+
+            // Toggle mobile menu
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked (for smooth scrolling)
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                    // Optional: highlight active link, though pure CSS does it too
+                    navItems.forEach(link => link.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+
+            // Highlight current section in navigation bar
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Adjust as needed, when 50% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navItems.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
